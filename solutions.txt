@@ -97,7 +97,11 @@ GROUP BY videogames.id;
 
 - Selezionare i premi ricevuti da ogni software house per i videogiochi che ha prodotto (55)
 
-`SELECT awards.* FROM awards INNER JOIN award_videogame ON award_videogame.award_id = awards.id INNER JOIN videogames ON videogames.id = award_videogame.videogame_id;`
+SELECT awards.*, software_houses.name as software_house 
+FROM awards
+INNER JOIN award_videogame ON awards.id= award_videogame.award_id
+INNER JOIN videogames on award_videogame.videogame_id = videogames.id
+INNER JOIN software_houses ON software_houses.id = videogames.software_house_id;
 
 - Selezionare categorie e classificazioni PEGI dei videogiochi che hanno ricevuto recensioni da 4 e 5 stelle, mostrandole una sola volta (3363)
 
